@@ -1,0 +1,36 @@
+{
+  "name": "microservies",
+  "version": "1.0.0",
+  "private": true,
+  "description": "",
+  "main": "index.js",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:auth": "npm run dev -w auth-service",
+    "dev:task": "npm run dev -w task-service",
+    "dev:gateway": "npm run dev -w api-gateway",
+    "dev:media": "npm run dev -w media-service",
+    "dev:workflow": "npm run dev -w workflow-service",
+    "db:migrate": "tsx scripts/db-migrate.ts",
+    "kafka:up": "docker compose -f docker/docker-compose.yml up -d",
+    "kafka:down": "docker compose -f docker/docker-compose.yml down",
+    "kafka:logs": "docker compose -f docker/docker-compose.yml logs -f kafka"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.2.0",
+    "tsx": "^4.23.11",
+    "typescript": "^7.0.2"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.1106.0",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "media-service": "^1.0.0",
+    "multer": "^2.2.0",
+    "shared": "^1.0.0"
+  }
+}
